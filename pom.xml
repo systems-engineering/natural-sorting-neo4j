@@ -12,14 +12,18 @@
   <description>A plugin to sorting in Natural order for Neo4j</description>
 
   <properties>
+    <java.version>11</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <neo4j.version>3.5.12</neo4j.version>
     <neo4j-java-driver.version>1.7.5</neo4j-java-driver.version>
-    <junit-jupiter.version>5.5.2</junit-jupiter.version>
-    <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
+    <junit-jupiter.version>5.7.0</junit-jupiter.version>
+    <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-    <assertj.version>3.13.2</assertj.version>
+    <assertj.version>3.18.1</assertj.version>
+    <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
   </properties>
 
   <dependencies>
@@ -65,13 +69,18 @@
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
+        <version>${maven-compiler-plugin.version}</version>
       </plugin>
       <plugin>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${maven-surefire-plugin.version}</version>
+      </plugin>
+      <plugin>
+        <!-- This generates a jar-file with our procedure code,
+             plus any dependencies marked as `compile` scope.
+             This should then be deployed in the `plugins` directory
+             of each Neo4j instance in your deployment.
+             After a restart, the procedure is available for calling. -->
         <artifactId>maven-shade-plugin</artifactId>
         <version>${maven-shade-plugin.version}</version>
         <configuration>

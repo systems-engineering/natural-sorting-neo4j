@@ -10,25 +10,25 @@ import java.util.*;
 public class NaturalSort
 {
     @UserFunction
-    // @Description("sort.natural_list(coll) sort on primitive collection")
+    // @Description("sort.natural_list(collection) sort on primitive collection")
     public List<Object> natural_list(
-        @Name("coll") List<Object> coll
+        @Name("collection") List<Object> collection
         ) {
-	    if (coll == null || coll.isEmpty()) return Collections.emptyList();
-        List<Object> sorted = new ArrayList<>(coll);
+	    if (collection == null || collection.isEmpty()) return Collections.emptyList();
+        List<Object> sorted = new ArrayList<>(collection);
         Collections.sort(sorted, new NaturalOrderComparator());
         return sorted;
     }
 
     @UserFunction
-    // @Description("sort.natural_obj(coll, props) sort on collection of nodes and specific props")
+    // @Description("sort.natural_obj(collection, props) sort on collection of nodes and specific props")
     public List<Node> natural_obj(
-        @Name("coll") List<Node> coll,
+        @Name("collection") List<Node> collection,
         @Name("props") String props
         ) {
-	    if (props == null) return coll;
-	    if (coll == null || coll.isEmpty()) return Collections.emptyList();
-        List<Node> sorted = new ArrayList<>(coll);
+	    if (props == null) return collection;
+	    if (collection == null || collection.isEmpty()) return Collections.emptyList();
+        List<Node> sorted = new ArrayList<>(collection);
         NaturalOrderNodeComparator comparator = new NaturalOrderNodeComparator();
         comparator.setProps(props); // This does not work yet, we should set this props somehow
         Collections.sort(sorted, comparator);
