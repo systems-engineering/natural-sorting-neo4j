@@ -20,7 +20,6 @@
 
 package sort;
 
-import org.neo4j.graphdb.Node;
 import java.util.*;
 
 public class NaturalOrderComparator implements Comparator<Object>

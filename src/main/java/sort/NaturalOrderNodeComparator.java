@@ -28,10 +28,10 @@ public class NaturalOrderNodeComparator implements Comparator<Node>
     private String props;
 
     public void setProps(String propsParameter) {
-        props = propsParameter;
+        this.props = propsParameter;
     }
     public String getProps() {
-        return props;
+        return this.props;
     }
 
     int compareRight(String a, String b)
@@ -73,8 +73,8 @@ public class NaturalOrderNodeComparator implements Comparator<Node>
     @Override
     public int compare(Node o1, Node o2)
     {
-        String a = o1.getProperty(props, null).toString();
-        String b = o2.getProperty(props, null).toString();
+        String a = o1.getProperty(this.props, null).toString();
+        String b = o2.getProperty(this.props, null).toString();
 
         int ia = 0, ib = 0;
         int nza = 0, nzb = 0;
