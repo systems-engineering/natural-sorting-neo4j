@@ -73,8 +73,8 @@ public class NaturalOrderNodeComparator implements Comparator<Node>
     @Override
     public int compare(Node o1, Node o2)
     {
-        String a = o1.getProperty(this.props, null).toString();
-        String b = o2.getProperty(this.props, null).toString();
+        String a = o1.getProperty(this.props, "").toString();
+        String b = o2.getProperty(this.props, "").toString();
 
         int ia = 0, ib = 0;
         int nza = 0, nzb = 0;
