@@ -26,6 +26,13 @@ public class NaturalOrderComparator implements Comparator<Object>
 {
     int compareRight(String a, String b)
     {
+        if (a == ""){
+            return +1;
+        }
+        if (b == ""){
+            return -1;
+        }
+
         int bias = 0, ia = 0, ib = 0;
 
         // The longest run of digits wins. That aside, the greatest
@@ -64,6 +71,13 @@ public class NaturalOrderComparator implements Comparator<Object>
     {
         String a = o1.toString();
         String b = o2.toString();
+
+        if (a == ""){
+            return +1;
+        }
+        if (b == ""){
+            return -1;
+        }
 
         int ia = 0, ib = 0;
         int nza = 0, nzb = 0;

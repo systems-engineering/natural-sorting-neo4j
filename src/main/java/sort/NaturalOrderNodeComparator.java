@@ -36,6 +36,13 @@ public class NaturalOrderNodeComparator implements Comparator<Node>
 
     int compareRight(String a, String b)
     {
+        if (a == ""){
+            return +1;
+        }
+        if (b == ""){
+            return -1;
+        }
+
         int bias = 0, ia = 0, ib = 0;
 
         // The longest run of digits wins. That aside, the greatest
@@ -79,6 +86,13 @@ public class NaturalOrderNodeComparator implements Comparator<Node>
         int ia = 0, ib = 0;
         int nza = 0, nzb = 0;
         char ca, cb;
+
+        if (a == ""){
+            return +1;
+        }
+        if (b == ""){
+            return -1;
+        }
 
         while (true) {
             // Only count the number of zeroes leading the last number compared
