@@ -42,6 +42,30 @@ public class NaturalSort
         return sorted;
     }
 
+    @UserFunction
+    // @Description("sort.natural_map(collection, props) sort on collection(map) of
+    // objects and specific props")
+    public List<Map> natural_map(
+            @Name("collection") List<Map> collection,
+            @Name("props") String props) {
+        if (props == null)
+            return collection;
+        if (collection == null || collection.isEmpty())
+            return Collections.emptyList();
+        List<Map> sorted = new ArrayList<>(collection);
+        NaturalOrderObjComparator comparator = new NaturalOrderObjComparator();
+        Boolean reverseOrder = reverseOrder(props);
+        String pureProp = cleanProperty(props);
+        comparator.setProps(pureProp);
+        Collections.sort(sorted, comparator);
+
+        if (reverseOrder == true) {
+            Collections.reverse(sorted);
+        }
+
+        return sorted;
+    }
+
     public Boolean reverseOrder(String props) {
         return props.charAt(0) == ASCENDING_ORDER_CHAR ? true : false;
     }
