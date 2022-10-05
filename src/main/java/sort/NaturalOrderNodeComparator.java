@@ -87,10 +87,14 @@ public class NaturalOrderNodeComparator implements Comparator<Node>
         int nza = 0, nzb = 0;
         char ca, cb;
 
-        if (a == ""){
+		if (a.isEmpty() && b.isEmpty()) {
+			return 0;
+		}
+
+        if (a.isEmpty()) {
             return +1;
         }
-        if (b == ""){
+        if (b.isEmpty()) {
             return -1;
         }
 
